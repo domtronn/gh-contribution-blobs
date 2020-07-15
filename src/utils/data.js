@@ -20,7 +20,7 @@ const schema = {
 const Min = (arr) => arr.reduce((a, b) => Math.min(a, b), Infinity)
 const Max = (arr) => arr.reduce((a, b) => Math.max(a, b), 0)
 
-const pivot = (data) => Object
+export const pivot = (data) => Object
   .entries(data)
   .reduce((acc, [k, v]) => {
     const { totalCommitContributions: t } = v

@@ -10,12 +10,14 @@ import Footer from '../src/modules/footer'
 
 import CBlob from '../src/compounds/contribution-blob';
 import Bar from '../src/compounds/bar'
+import NavBar from '../src/compounds/navbar'
 
 import data from '../src/data.json'
 
 const Home = () => {
   const [range, setRange] = useState(15)
   const [smooth, setSmooth] = useState(0.2)
+  const [opacity, setOpacity] = useState(0.4)
 
   return (
   <Fragment>
@@ -25,18 +27,29 @@ const Home = () => {
     </Head>
 
     <Main>
-      <div className='hero'>
+      <div sx={{
+        position: 'relative',
+        zIndex: 'max',
+      }}
+      >
         <Styled.h1>Git.Blobs</Styled.h1>
       </div>
 
       <div
-        sx={{ textAlign: 'center' }}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          zIndex: 'more'
+        }}
       >
-        <CBlob
+        <NavBar
           sx={{
-            position: 'relative',
-            zIndex: 'more'
+            right: '40vh'
           }}
+          data={data}
+        />
+        <CBlob
+          opacity={opacity}
           smooth={smooth}
           range={range}
           data={data}
@@ -60,10 +73,13 @@ const Home = () => {
         </svg>
         <Bar>
           <div sx={{ mx: 'md', display: 'inline-block', width: '25%' }}>
-            <Slider from={0.1} to={0.3} step={0.05} value={smooth} onChange={setSmooth} />
+            <Slider from={0.1} to={0.4} step={0.05} value={smooth} onChange={setSmooth} />
           </div>
           <div sx={{ mx: 'md', display: 'inline-block', width: '25%' }}>
-            <Slider from={3} to={15} step={3} value={range} onChange={setRange} />
+            <Slider from={9} to={21} step={3} value={range} onChange={setRange} />
+          </div>
+          <div sx={{ mx: 'md', display: 'inline-block', width: '25%' }}>
+            <Slider from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity} />
           </div>
         </Bar>
       </div>
