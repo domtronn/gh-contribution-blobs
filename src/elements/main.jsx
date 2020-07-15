@@ -6,6 +6,7 @@ export default ({ children }) => (
   <ThemeProvider theme={Theme}>
     <main
       sx={{
+        position: 'relative',
         width: '100%'
       }}
     >

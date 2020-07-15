@@ -28,13 +28,16 @@ export default () => (
 
     <Styled.p
       sx={{
+        textAlign: 'center',
         color: 'fg-on-primary'
       }}
     >
+      © 2020 Dom Charlesworth
+      <br />
       Built with
       <GrKeyboard
         size='1.5em'
-        sx={{ '*': { strokeWidth: 0.8, stroke: 'fg-on-primary' }, mx: 12, mb: -1 }}
+        sx={{ '*': { strokeWidth: 0.8, stroke: 'fg-on-primary' }, mx: 12, mb: -6 }}
       />
       by Dom Charlesworth
     </Styled.p>
