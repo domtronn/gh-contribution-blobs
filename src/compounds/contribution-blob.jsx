@@ -4,18 +4,21 @@ import { jsx } from 'theme-ui'
 import { pivotAndNormalize } from '../utils/data'
 import { svgPath, bezierPath, linePath } from '../utils/svg'
 
+const maxScale = 1.2
+
 export const Blob = ({
   data,
   size,
   scale = 1,
   smooth = 0.2,
+  highlight = false,
   className,
   ...props
 }) => (
   <path
     className={className}
     d={svgPath(data, bezierPath(smooth, true), true)}
-    transform={`translate(${size} ${size}) scale(${scale})`}
+    transform={`translate(${size} ${size}) scale(${highlight ? maxScale : scale})`}
     {...props}
   />
 )
@@ -25,9 +28,12 @@ export default ({
   range: _range = 15,
   smooth: _smooth = 0.2,
   opacity: _opacity = 0.2,
+
+  highlight = [],
+
   className
 }) => {
-  const size = 85
+  const size = 80
   const [scale, range] = [45 - _range, _range]
   const data = pivotAndNormalize(_data, scale, range)
 
@@ -52,11 +58,19 @@ export default ({
            key={i}
            data={d}
            size={size / 2}
-           scale={0.3 + (0.1 * (arr.length - i))}
+           scale={
+             highlight.length
+               ? 0
+               : 0.3 + (0.1 * (arr.length - i))
+           }
            smooth={_smooth}
+           highlight={highlight.includes(year)}
            sx={{
              fill: i % 2 ? 'primary' : 'secondary',
-             transition: `all 0.8s ${0.05 * (arr.length - i)}s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`,
+             transition:
+             highlight.length && !highlight.includes(year)
+               ? `all 0.5s ease-in-out`
+               : `all 0.8s ${0.05 * (arr.length - i)}s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`,
              opacity: _opacity
            }}
          />

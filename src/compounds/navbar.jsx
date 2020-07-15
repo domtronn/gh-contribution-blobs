@@ -14,7 +14,7 @@ export default ({
 }) => {
   const [active, setActive] = useState()
   const items = Object.keys(pivot(data))
-  
+
   return (
     <div
       sx={{
@@ -27,8 +27,11 @@ export default ({
       {items.map((item, i) => (
         <span
           key={i}
-          onClick={e => active === i ? setActive(undefined) : setActive(i)}
-          onMouseEnter={e => onHover(e.target.value)}
+          onClick={e => {
+            active === i ? setActive(undefined) : setActive(i)
+            active === i ? onClick(undefined) : onClick(item)
+          }}
+          onMouseEnter={e => onHover(item)}
           onMouseLeave={e => onHover()}
           sx={{
             display: 'block',
