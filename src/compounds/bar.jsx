@@ -1,23 +1,18 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Flex } from 'reflexbox'
+import Container from '../elements/container'
 
 export default ({ children }) => (
-  <Flex
-    flexWrap='wrap'
+  <Container
     sx={{
       position: 'relative',
       zIndex: 'max',
-
-      marginX: ['lg', 'lg', 'auto'],
       padding: 'md',
       borderRadius: 'md',
       backgroundColor: 'background',
-      boxShadow: 'box',
-
-      maxWidth: ['100%','100%',960],
+      boxShadow: 'box'
     }}
   >
     {children}
-  </Flex>
+  </Container>
 )

@@ -71,7 +71,7 @@ export default {
     h3: {
       color: 'fg',
       fontFamily: 'base',
-      fontSize: 'lg'
+      fontSize: ['sm', 'md', 'lg']
     }
   }
 }

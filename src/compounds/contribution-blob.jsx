@@ -39,12 +39,13 @@ export default ({
 
   return (
     <svg
-      width='160vh'
       height='80vh'
       sx={{
-        marginY: -size * 1.2,
-        marginX: 'auto',
-        alignSelf: 'center'
+        marginY: [-size * 1.2],
+        marginX: [0,0,'auto'],
+        alignSelf: 'center',
+        overflow: 'visible',
+        maxWidth: ['100vw','100vw','160vh']
       }}
       viewBox={`0 0 ${size} ${size}`}
       className={className}
@@ -70,6 +71,8 @@ export default ({
              transition:
              highlight.length && !highlight.includes(year)
                ? `all 0.5s ease-in-out`
+               : highlight.includes(year)
+               ? `all 0.8s 0s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`
                : `all 0.8s ${0.05 * (arr.length - i)}s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`,
              opacity: _opacity
            }}

@@ -2,10 +2,15 @@
 import { jsx, Styled } from 'theme-ui'
 import { Fragment, useState } from 'react'
 
+/* ssr */
+import fs from 'fs'
+import path from 'path'
+
 /* Structure */
 import Head from 'next/head'
 import Footer from '../src/modules/footer'
 import { Flex, Box } from 'reflexbox'
+import Container from '../src/elements/container'
 
 /* Elements */
 import Slider from '../src/elements/slider'
@@ -16,9 +21,7 @@ import CBlob from '../src/compounds/contribution-blob';
 import Bar from '../src/compounds/bar'
 import NavBar from '../src/compounds/navbar'
 
-import data from '../src/data.json'
-
-const Home = () => {
+const Home = ({ data }) => {
   /* Slider control */
   const [range, setRange] = useState(15)
   const [smooth, setSmooth] = useState(0.2)
@@ -27,8 +30,7 @@ const Home = () => {
   /* Nav control */
   const [highlighted, setHighlighted] = useState(null)
   const [selected, setSelected] = useState(null)
-
-  const highlights = [highlighted, selected].filter(i => !!i)
+  const highlights = [selected].filter(i => !!i)
 
   return (
     <Fragment>
@@ -42,11 +44,9 @@ const Home = () => {
             <Styled.h1>Git.Blobs</Styled.h1>
           </Box>
 
-          <Flex sx={{ zIndex: 'more', position: 'relative' }}>
+          <Container sx={{ zIndex: 'more' }}>
             <NavBar
-              sx={{
-                right: '40vh'
-              }}
+              sx={{ right: 0 }}
               onHover={setHighlighted}
               onClick={setSelected}
               data={data}
@@ -58,7 +58,7 @@ const Home = () => {
               data={data}
               highlight={highlights}
             />
-          </Flex>
+          </Container>
 
           <div
             sx={{
@@ -103,6 +103,14 @@ const Home = () => {
       </Main>
     </Fragment>
   )
+}
+
+export async function getStaticProps (ctx) {
+  const dataPath = path.join(process.cwd(), 'pages', 'api', 'data.json')
+  const dataStr = fs.readFileSync(dataPath, 'utf-8')
+  const data = JSON.parse(dataStr)
+
+  return { props: { data } }
 }
 
 export default Home
