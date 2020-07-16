@@ -42,7 +42,6 @@ export default ({
       height='80vh'
       sx={{
         marginY: [-size * 1.2],
-        marginX: [0,0,'auto'],
         alignSelf: 'center',
         overflow: 'visible',
         maxWidth: ['100vw','100vw','160vh']

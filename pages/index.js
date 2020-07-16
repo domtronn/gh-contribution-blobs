@@ -71,20 +71,29 @@ const Home = ({ data: _data }) => {
           </Styled.h1>
         </Box>
 
-        <Container sx={{ zIndex: 'more' }}>
+        <Container sx={{
+          zIndex: 'more',
+          '> *': { transition: 'all 0.4s ease-in-out' }
+        }}>
           <NavBar
-            sx={{ right: 0 }}
+            sx={{ right: 0, opacity: loading ? 0 : 1 }}
             onHover={setHighlighted}
             onClick={setSelected}
             data={data}
           />
-          <CBlob
-            opacity={opacity}
-            smooth={smooth}
-            range={range}
-            data={data}
-            highlight={highlights}
-          />
+          <div
+            sx={{
+              transform: loading ? 'scale(0)' : 'scale(1)',
+              marginX: [0,0,'auto'],
+            }}>
+            <CBlob
+              opacity={opacity}
+              smooth={smooth}
+              range={range}
+              data={data}
+              highlight={highlights}
+            />
+          </div>
         </Container>
 
         <WaveContainer
@@ -113,6 +122,8 @@ const Home = ({ data: _data }) => {
                 setLoading(true)
                 const res = await fetch(`/api/user/${username}`)
                 const data = await res.json()
+                setHighlighted(null)
+                setSelected(null)
                 setData(data)
                 setLoading(false)
               }}>
