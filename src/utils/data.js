@@ -35,6 +35,14 @@ export const pivot = (data) => Object
     }
   }, {})
 
+export const filter = (data) => Object
+  .entries(data)
+  .reduce((acc, [year, months]) => {
+    return Max(Object.values(months)) > 0
+      ? { ...acc, [year]: months }
+      : acc
+  }, {})
+
 const normalise = (data, scale = 0, range = 1) => Object
   .entries(data)
   .reduce((acc, [year, months]) => {
@@ -55,4 +63,4 @@ const normalise = (data, scale = 0, range = 1) => Object
     }
   }, {})
 
-export const pivotAndNormalize = (data, scale, range) => normalise(pivot(data), scale, range)
+export const pivotAndNormalize = (data, scale, range) => normalise(filter(pivot(data)), scale, range)

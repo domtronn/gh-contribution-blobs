@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import { useState } from 'react'
 
-import { pivot } from '../utils/data'
+import { pivot, filter } from '../utils/data'
 
 import { RiCloseCircleLine, RiArrowDropLeftLine } from 'react-icons/ri'
 
@@ -13,7 +13,7 @@ export default ({
   onClick = () => {}
 }) => {
   const [active, setActive] = useState()
-  const items = Object.keys(pivot(data))
+  const items = Object.keys(filter(pivot(data)))
 
   return (
     <div

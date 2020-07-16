@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 
 import { useState } from 'react'
+import { shadow } from '../utils/theme-ui'
 
 export default ({
   from, to,
@@ -13,17 +14,14 @@ export default ({
   const sxThumb = {
     transition: 'transform 0.1s ease-in-out',
     transform: active ? 'scale(1.2)' : 'scale(1)',
-    '-webkit-appearance': 'none',
+    WebkitAppearance: 'none',
     mt: -10,
     width: 24,
     height: 24,
     borderRadius: 'round',
     backgroundColor: 'primary',
-    cursor: 'pointer'
-  }
-
-  const sxThumbFocus = {
-    boxShadow: ({ colors: c }) => active ? `0 0 0 4px ${c.background}, 0 0 0 6px ${c.primary}` : ''
+    cursor: 'pointer',
+    boxShadow: active ? shadow('thumb-focus') : shadow('thumb')
   }
 
   const sxTrack = {
@@ -65,10 +63,6 @@ export default ({
         '::-webkit-slider-thumb': sxThumb,
         '::-moz-range-thumb': sxThumb,
         '::-ms-thumb': sxThumb,
-
-        ':focus::-webkit-slider-thumb': sxThumbFocus,
-        ':focus::-moz-range-thumb': sxThumbFocus,
-        ':focus::-ms-thumb': sxThumbFocus,
 
         '::-webkit-slider-runnable-track': sxTrack,
         '::-moz-range-track': sxTrack,
