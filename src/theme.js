@@ -58,6 +58,7 @@ export default {
   styles: {
     root: {
       letterSpacing: '.2em',
+      color: 'fg',
       fontFamily: 'base',
       fontSize: 'base',
       margin: 0
@@ -71,9 +72,10 @@ export default {
       fontFamily: 'heading'
     },
     h3: {
-      color: 'fg',
-      fontFamily: 'base',
       fontSize: ['sm', 'md', 'lg']
+    },
+    p: {
+      fontSize: 'xs'
     }
   }
 }

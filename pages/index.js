@@ -17,6 +17,7 @@ import WaveContainer from '../src/elements/wave-container'
 
 /* Elements */
 import Slider from '../src/elements/slider'
+import Loader from '../src/elements/loader'
 import Main from '../src/elements/main'
 
 /* Compounds */
@@ -75,6 +76,25 @@ const Home = ({ data: _data }) => {
           zIndex: 'more',
           '> *': { transition: 'all 0.4s ease-in-out' }
         }}>
+          <Loader
+            sx={{
+              opacity: loading ? 1 : 0,
+              transitionDelay: loading ? '0.6s !important' : '0 !important',
+              transformOrigin: '0 0',
+              transform: loading ? 'scale(1)' : 'scale(0)',
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              '> *': {
+                ml: '-50%',
+                mt: '-50%'
+              }
+            }}
+            animate={loading}
+            data={data}
+          >
+          </Loader>
+
           <NavBar
             sx={{ right: 0, opacity: loading ? 0 : 1 }}
             onHover={setHighlighted}
