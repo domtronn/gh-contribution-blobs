@@ -22,7 +22,7 @@ export default ({
   useEffect(() => {
     if (!animate) return
     const iid = setTimeout(() => {
-      setI((i + 1) % d.length)
+      setI(i + 1)
     }, time)
 
     return () => clearInterval(iid)
@@ -45,7 +45,16 @@ export default ({
             transition: `all ${3 * time / 4}ms cubic-bezier(.77,2.03,.68,.56)`,
             transform: 'translate(20px, 20px)'
           }}
-          d={svgPath(d[i], bezierPath(0.2, true), true)}
+          d={svgPath(d[i % d.length], bezierPath(0.2, true), true)}
+        />
+        <path
+          sx={{
+            fill: 'background',
+            opacity: 1,
+            transition: `all ${3 * time / 4}ms cubic-bezier(.77,2.03,.68,.56)`,
+            transform: 'translate(20px, 20px) scale(0.6)'
+          }}
+          d={svgPath(d[(i * 2) % d.length], bezierPath(0.2, true), true)}
         />
       </svg>
       {children}
