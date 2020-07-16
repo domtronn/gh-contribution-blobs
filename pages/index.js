@@ -32,8 +32,6 @@ import NavBar from '../src/compounds/navbar'
 
 import { shadow } from '../src/utils/theme-ui'
 
-const fetcher = url => fetch(url).then(res => res.json())
-
 const SliderBox = ({ children }) => (
   <Box
     width={[1, 1/3, 1/3]}
@@ -52,7 +50,7 @@ const Home = ({ data: _data }) => {
   /* Nav control */
   const [highlighted, setHighlighted] = useState(null)
   const [selected, setSelected] = useState(null)
-  const highlights = [selected].filter(i => !!i)
+  const highlights = [highlighted].filter(i => !!i)
 
   /* Form control */
   const [username, setUsername] = useState()
@@ -63,7 +61,14 @@ const Home = ({ data: _data }) => {
     <Fragment>
       <Head>
         <title>Git.Blobs</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Generative art built from your GitHub commit history" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
 
       <Main>
@@ -109,8 +114,9 @@ const Home = ({ data: _data }) => {
           <div
             sx={{
               transform: loading ? 'scale(0)' : 'scale(1)',
-              marginX: [0,0,'auto'],
-            }}>
+              marginX: [0, 0, 'auto'],
+            }}
+          >
             <CBlob
               opacity={opacity}
               smooth={smooth}
@@ -145,11 +151,15 @@ const Home = ({ data: _data }) => {
               }}
             >
               <TextInput
+                id='github-username'
                 placeholder='username'
                 onChange={e => setUsername(e.target.value)}
-              />
+              >
+                GitHub username
+              </TextInput>
 
               <Button
+                aria-label='search-user'
                 sx={{
                   marginLeft: 'md',
                   borderRadius: 'round',
@@ -174,16 +184,39 @@ const Home = ({ data: _data }) => {
               width={1}
             >
               <SliderBox>
-                <Slider from={0.1} to={0.4} step={0.05} value={smooth} onChange={setSmooth} />
+                <Slider id='smoothness' from={0.1} to={0.4} step={0.05} value={smooth} onChange={setSmooth}>
+                  Smoothness
+                </Slider>
               </SliderBox>
               <SliderBox>
-                <Slider from={9} to={21} step={3} value={range} onChange={setRange} />
+                <Slider id='variance' from={9} to={21} step={3} value={range} onChange={setRange} >
+                  Maxima variance
+                </Slider>
               </SliderBox>
               <SliderBox>
-                <Slider from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity} />
+                <Slider id='opacity' from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity} >
+                  Opacity
+                </Slider>
               </SliderBox>
             </Box>
           </Bar>
+
+          <Container
+            sx={{
+              mt: 'lg',
+              pb: 80,
+            }}
+          >
+            <Box
+              width={[1,1,2/3]}
+            >
+              <Styled.p>
+                <b>Git.Blobs</b> is an idea I had to create generative art from
+                your GitHub contributions
+              </Styled.p>
+            </Box>
+          </Container>
+
         </WaveContainer>
         <Footer />
       </Main>

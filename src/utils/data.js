@@ -35,7 +35,7 @@ export const pivot = (data) => Object
     }
   }, {})
 
-export const filter = (data) => Object
+const filter = (data) => Object
   .entries(data)
   .reduce((acc, [year, months]) => {
     return Max(Object.values(months)) > 0

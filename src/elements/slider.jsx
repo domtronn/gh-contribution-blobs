@@ -4,11 +4,15 @@ import { jsx } from 'theme-ui'
 import { useState } from 'react'
 import { shadow } from '../utils/theme-ui'
 
+import Label from './label'
+
 export default ({
+  id,
   from, to,
   value = 0,
   step = 1,
   onChange = () => {},
+  children,
 }) => {
   const [active, setActive] = useState(false)
   const sxThumb = {
@@ -33,43 +37,49 @@ export default ({
   }
 
   return (
-    <input
-      onChange={(e) => onChange(e.target.value)}
+    <>
+      <input
+        id={id}
+        type='range'
 
-      type='range'
-      min={from}
-      max={to}
-      step={step}
+        onChange={(e) => onChange(e.target.value)}
 
-      onMouseDown={() => setActive(true)}
-      onMouseUp={() => setActive(false)}
+        min={from}
+        max={to}
+        step={step}
 
-      sx={{
-        /* reset styles */
-        appearance: 'none',
-        outline: 'none',
-        background: 'transparent',
+        onMouseDown={() => setActive(true)}
+        onMouseUp={() => setActive(false)}
 
-        width: '100%',
-
-        '::-ms-track': {
-          width: '100%',
-          cursor: 'pointer',
+        sx={{
+          /* reset styles */
+          appearance: 'none',
+          outline: 'none',
           background: 'transparent',
-          borderColor: 'transparent',
-          color: 'transparent',
-        },
 
-        '::-webkit-slider-thumb': sxThumb,
-        '::-moz-range-thumb': sxThumb,
-        '::-ms-thumb': sxThumb,
+          width: '100%',
 
-        '::-webkit-slider-runnable-track': sxTrack,
-        '::-moz-range-track': sxTrack,
-        '::-ms-track': sxTrack,
-      }}
+          '::-ms-track': {
+            width: '100%',
+            cursor: 'pointer',
+            background: 'transparent',
+            borderColor: 'transparent',
+            color: 'transparent',
+          },
 
-    />
+          '::-webkit-slider-thumb': sxThumb,
+          '::-moz-range-thumb': sxThumb,
+          '::-ms-thumb': sxThumb,
 
+          '::-webkit-slider-runnable-track': sxTrack,
+          '::-moz-range-track': sxTrack,
+          '::-ms-track': sxTrack,
+        }}
+      />
+
+      <Label id={id}>
+        {children}
+      </Label>
+    </>
   )
 }

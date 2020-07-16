@@ -5,6 +5,7 @@ import { shadow } from '../utils/theme-ui'
 
 export default ({
   children,
+  label,
   ...rest
 }) => (
   <button

@@ -83,6 +83,7 @@ export default {
       fontSize: ['sm', 'md', 'lg']
     },
     p: {
+      lineHeight: 1.8,
       fontSize: 'xs'
     }
   }
