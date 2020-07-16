@@ -20,13 +20,14 @@ export default async (req, res) => {
     query: { user }
   } = req
 
+  res.setHeader('Content-Type', 'application/json')
+  res.statusCode = 404
+
   /* Check to see whether the user exists */
   try {
     await c.request(userQuery(user))
   } catch (e) {
-    res.statusCode = 404
-    res.end()
-    return
+    return res.end(JSON.stringify({ err: 'not found' }))
   }
 
   try {
@@ -42,10 +43,8 @@ export default async (req, res) => {
     )
 
     res.statusCode = 200
-    res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(result))
   } catch (e) {
-    res.statusCode = 404
-    res.end()
+    res.end({ err: 'error' })
   }
 }

@@ -1,3 +1,5 @@
+import '../src/styles.css'
+
 import 'typeface-inter'
 import 'typeface-abril-fatface'
 

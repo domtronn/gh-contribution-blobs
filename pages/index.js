@@ -5,6 +5,7 @@ import { Fragment, useState } from 'react'
 import fetch from 'unfetch'
 
 import { pivotAndFilter } from '../src/utils/data'
+import { isEmpty } from '../src/utils/obj'
 
 import { FaRegPaperPlane } from 'react-icons/fa'
 import { FiDownloadCloud, FiCode } from 'react-icons/fi'
@@ -26,6 +27,7 @@ import TextInput from '../src/elements/text-input'
 /* Elements */
 import Slider from '../src/elements/slider'
 import Loader from '../src/elements/loader'
+import Error from '../src/elements/Error'
 import Main from '../src/elements/main'
 
 /* Compounds */
@@ -92,8 +94,17 @@ const Home = ({ data: _data }) => {
 
         <Container sx={{
           zIndex: 'more',
+          display: 'flex',
+          justifyContent: isEmpty(data) ? 'center' : 'initial',
           '> *': { transition: 'all 0.4s ease-in-out' }
-        }}>
+        }}
+        >
+          <Error error={isEmpty(data) && !loading}>
+            <Styled.b sx={{ fontSize: '1.4em' }}>Oh no!</Styled.b>
+            <br />
+            We couldn't find any data for that user.
+          </Error>
+
           <Loader
             sx={{
               opacity: loading ? 1 : 0,
@@ -169,12 +180,20 @@ const Home = ({ data: _data }) => {
                 aria-label='search-user'
                 onClick={async e => {
                   setLoading(true)
-                  const res = await fetch(`/api/user/${username}`)
-                  const data = await res.json()
-                  setHighlighted(null)
-                  setSelected(null)
-                  setData(data)
-                  setLoading(false)
+                  try {
+                    const res = await fetch(`/api/user/${username}`)
+                    const data = await res.json()
+                    setHighlighted(null)
+                    setSelected(null)
+                    setData(data)
+                    setLoading(false)
+                  } catch (e) {
+                    setHighlighted(null)
+                    setSelected(null)
+                    setLoading(false)
+                    setData({})
+                  }
+
                 }}
               >
                 <FaRegPaperPlane size='1.2em' />
