@@ -4,6 +4,8 @@ import { Fragment, useState } from 'react'
 
 import fetch from 'unfetch'
 
+import { pivotAndFilter } from '../src/utils/data'
+
 import { FaRegPaperPlane } from 'react-icons/fa'
 import { FiDownloadCloud, FiCode } from 'react-icons/fi'
 
@@ -163,7 +165,6 @@ const Home = ({ data: _data }) => {
               >
                 GitHub username
               </TextInput>
-
               <Button
                 aria-label='search-user'
                 onClick={async e => {
@@ -222,8 +223,8 @@ const Home = ({ data: _data }) => {
 
           <Container
             sx={{
-              mt: 'lg',
-              pb: 80,
+              mt: 'xl',
+              pb: 'xxl',
             }}
           >
             <Box
@@ -248,7 +249,7 @@ export async function getStaticProps (ctx) {
   const dataStr = fs.readFileSync(dataPath, 'utf-8')
   const data = JSON.parse(dataStr)
 
-  return { props: { data } }
+  return { props: { data: pivotAndFilter(data) } }
 }
 
 export default Home

@@ -1,7 +1,9 @@
 import { GraphQLClient } from 'graphql-request'
 import { userQuery, yearsQuery, contributionsQuery } from './gh-query'
 
+import { pivotAndFilter } from '../../../src/utils/data'
 import { path } from './obj'
+
 const { GH_TOKEN: token } = process.env
 
 const c = new GraphQLClient(
@@ -35,13 +37,14 @@ export default async (req, res) => {
       contributionsQuery(user, years).map(c.request.bind(c))
     )
 
-    const result = data.reduce((acc, { user }) => ({ ...acc, ...user }), {})
+    const result = pivotAndFilter(
+      data.reduce((acc, { user }) => ({ ...acc, ...user }), {})
+    )
 
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(result))
   } catch (e) {
-    console.error(e)
     res.statusCode = 404
     res.end()
   }

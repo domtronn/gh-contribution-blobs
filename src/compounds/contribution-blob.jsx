@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
 
-import { pivotAndNormalize } from '../utils/data'
-import { svgPath, bezierPath, linePath } from '../utils/svg'
+import { normalise } from '../utils/data'
+import { svgPath, bezierPath } from '../utils/svg'
 
 const maxScale = 0.8
 
@@ -37,7 +37,7 @@ export default ({
 
   const size = 80
   const [scale, range] = [45 - _range, _range]
-  const data = pivotAndNormalize(_data, scale, range)
+  const data = normalise(_data, scale, range)
 
   return (
     <svg

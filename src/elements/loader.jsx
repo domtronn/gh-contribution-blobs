@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { useState, useEffect } from 'react'
 
-import { pivotAndNormalize } from '../utils/data'
+import { normalise } from '../utils/data'
 import { svgPath, bezierPath } from '../utils/svg'
 
 export default ({
@@ -14,9 +14,7 @@ export default ({
 }) => {
   const [i, setI] = useState(0)
   const [d] = useState(
-    Object.values(
-      pivotAndNormalize(data, 10, 5)
-    )
+    Object.values(normalise(data, 10, 5))
   )
 
   useEffect(() => {

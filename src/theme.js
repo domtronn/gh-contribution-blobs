@@ -31,7 +31,9 @@ export default {
   space: {
     sm: 8,
     md: 16,
-    lg: 32
+    lg: 32,
+    xl: 64,
+    xxl: 128
   },
 
   colors: {
@@ -39,6 +41,14 @@ export default {
     secondary: '#442371',
     background: '#ecc5b2',
     grey: '#e6b8a2',
+    'fg-on-primary': '#ecc5b2',
+
+    // primary: '#3840ff',
+    // secondary: '#3840ff',
+    // background: '#fff',
+    // grey: '#d9d9d9',
+    // 'fg-on-primary': '#d9d9d9',
+
     // primary: '#21A0A0',
     // secondary: '#046865',
     // background: '#FCFFF7',
@@ -49,8 +59,7 @@ export default {
     // secondary: '#ff686b',
     // background: '#F2F5EA',
     // grey: '#D6DBD2',
-    fg: '#2C363F',
-    'fg-on-primary': '#ecc5b2',
+    fg: '#111',
   },
 
   shadows: {
