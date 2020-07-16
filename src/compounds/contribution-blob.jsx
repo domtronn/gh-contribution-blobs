@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, useThemeUI } from 'theme-ui'
 
 import { pivotAndNormalize } from '../utils/data'
 import { svgPath, bezierPath, linePath } from '../utils/svg'
@@ -18,7 +18,7 @@ export const Blob = ({
   <path
     className={className}
     d={svgPath(data, bezierPath(smooth, true), true)}
-    transform={`translate(${size} ${size}) scale(${highlight ? maxScale : scale})`}
+    transform={`translate(${size} ${size}) scale(${highlight ? maxScale : scale.toFixed(2)})`}
     {...props}
   />
 )
@@ -33,12 +33,16 @@ export default ({
 
   className
 }) => {
+  const { theme } = useThemeUI()
+
   const size = 80
   const [scale, range] = [45 - _range, _range]
   const data = pivotAndNormalize(_data, scale, range)
 
   return (
     <svg
+      id='contribution-blob'
+      xmlns='http://www.w3.org/2000/svg'
       height='80vh'
       sx={{
         marginY: [-size * 1.2],
@@ -65,15 +69,15 @@ export default ({
            }
            smooth={_smooth}
            highlight={highlight.includes(year)}
+           fill={theme.colors[i % 2 ? 'primary' : 'secondary']}
+           opacity={_opacity}
            sx={{
-             fill: i % 2 ? 'primary' : 'secondary',
              transition:
              highlight.length && !highlight.includes(year)
                ? `all 0.5s ease-in-out`
                : highlight.includes(year)
                ? `all 0.8s 0s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`
-               : `all 0.8s ${0.05 * (arr.length - i)}s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`,
-             opacity: _opacity
+               : `all 0.8s ${0.05 * (arr.length - i)}s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`
            }}
          />
        ))}

@@ -5,6 +5,7 @@ import { Fragment, useState } from 'react'
 import fetch from 'unfetch'
 
 import { FaRegPaperPlane } from 'react-icons/fa'
+import { FiDownloadCloud, FiCode } from 'react-icons/fi'
 
 /* ssr */
 import fs from 'fs'
@@ -31,6 +32,11 @@ import Bar from '../src/compounds/bar'
 import NavBar from '../src/compounds/navbar'
 
 import { shadow } from '../src/utils/theme-ui'
+import { download } from '../src/utils/download'
+
+const cleanSVG = (txt = '') => txt
+  .replace(/ class=".+?"/g, '')
+  .replace(/ data-year=".+?"/g, '')
 
 const SliderBox = ({ children }) => (
   <Box
@@ -160,11 +166,6 @@ const Home = ({ data: _data }) => {
 
               <Button
                 aria-label='search-user'
-                sx={{
-                  marginLeft: 'md',
-                  borderRadius: 'round',
-                  padding: 'sm'
-                }}
                 onClick={async e => {
                   setLoading(true)
                   const res = await fetch(`/api/user/${username}`)
@@ -175,7 +176,7 @@ const Home = ({ data: _data }) => {
                   setLoading(false)
                 }}
               >
-                <FaRegPaperPlane />
+                <FaRegPaperPlane size='1.2em' />
               </Button>
             </Flex>
 
@@ -199,6 +200,24 @@ const Home = ({ data: _data }) => {
                 </Slider>
               </SliderBox>
             </Box>
+
+            <Flex
+              width={1}
+              alignItems='center'
+              justifyContent='center'
+              sx={{ mb: -40 }}
+            >
+              <Button
+                aria-label='download-svg'
+                onClick={() => download(`${username || 'blob'}.svg`, 'contribution-blob', cleanSVG)}
+              >
+                <FiDownloadCloud size='1.8em' />
+              </Button>
+              <Button aria-label='download-svg'>
+                <FiCode size='2em' />
+              </Button>
+            </Flex>
+
           </Bar>
 
           <Container
