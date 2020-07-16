@@ -35,49 +35,47 @@ export default ({
   }
 
   return (
-    <div>
-      <input
-        onChange={(e) => onChange(e.target.value)}
+    <input
+      onChange={(e) => onChange(e.target.value)}
 
-        type='range'
-        min={from}
-        max={to}
-        step={step}
+      type='range'
+      min={from}
+      max={to}
+      step={step}
 
-        onMouseDown={() => setActive(true)}
-        onMouseUp={() => setActive(false)}
+      onMouseDown={() => setActive(true)}
+      onMouseUp={() => setActive(false)}
 
-        sx={{
-          /* reset styles */
-          appearance: 'none',
-          outline: 'none',
-          background: 'transparent',
+      sx={{
+        /* reset styles */
+        appearance: 'none',
+        outline: 'none',
+        background: 'transparent',
 
+        width: '100%',
+
+        '::-ms-track': {
           width: '100%',
+          cursor: 'pointer',
+          background: 'transparent',
+          borderColor: 'transparent',
+          color: 'transparent',
+        },
 
-          '::-ms-track': {
-            width: '100%',
-            cursor: 'pointer',
-            background: 'transparent',
-            borderColor: 'transparent',
-            color: 'transparent',
-          },
+        '::-webkit-slider-thumb': sxThumb,
+        '::-moz-range-thumb': sxThumb,
+        '::-ms-thumb': sxThumb,
 
-          '::-webkit-slider-thumb': sxThumb,
-          '::-moz-range-thumb': sxThumb,
-          '::-ms-thumb': sxThumb,
+        ':focus::-webkit-slider-thumb': sxThumbFocus,
+        ':focus::-moz-range-thumb': sxThumbFocus,
+        ':focus::-ms-thumb': sxThumbFocus,
 
-          ':focus::-webkit-slider-thumb': sxThumbFocus,
-          ':focus::-moz-range-thumb': sxThumbFocus,
-          ':focus::-ms-thumb': sxThumbFocus,
+        '::-webkit-slider-runnable-track': sxTrack,
+        '::-moz-range-track': sxTrack,
+        '::-ms-track': sxTrack,
+      }}
 
-          '::-webkit-slider-runnable-track': sxTrack,
-          '::-moz-range-track': sxTrack,
-          '::-ms-track': sxTrack,
-        }}
+    />
 
-      />
-      <span />
-    </div>
   )
 }

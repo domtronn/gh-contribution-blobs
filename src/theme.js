@@ -1,4 +1,9 @@
 export default {
+  breakpoints: [
+    '768px',
+    '990px'
+  ],
+
   fonts: {
     base: "Inter, sans-serif",
     heading: "'Abril Fatface', sans-serif"
@@ -7,6 +12,7 @@ export default {
   fontSizes: {
     base: 18,
     lg: 24,
+    xl: 48,
     xxl: 96
   },
 
@@ -24,7 +30,8 @@ export default {
 
   space: {
     sm: 8,
-    md: 36
+    md: 36,
+    lg: 48
   },
 
   colors: {
@@ -56,7 +63,7 @@ export default {
       margin: 0,
       textAlign: 'center',
       color: 'primary',
-      fontSize: 'xxl',
+      fontSize: ['xl', 'xl', 'xxl'],
       textShadow: 'heading',
       letterSpacing: '.2em',
       fontFamily: 'heading'

@@ -8,10 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "graphql-request": "^2.0.0",
     "next": "^9.3.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-icons": "^3.10.0",
+    "reflexbox": "^4.0.6",
     "theme-ui": "^0.3.1",
     "typeface-abril-fatface": "^0.0.72",
     "typeface-fredoka-one": "^0.0.72",

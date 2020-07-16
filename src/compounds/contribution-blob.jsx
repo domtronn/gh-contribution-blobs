@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui'
 import { pivotAndNormalize } from '../utils/data'
 import { svgPath, bezierPath, linePath } from '../utils/svg'
 
-const maxScale = 1.2
+const maxScale = 0.8
 
 export const Blob = ({
   data,
