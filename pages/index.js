@@ -4,6 +4,8 @@ import { Fragment, useState } from 'react'
 
 import fetch from 'unfetch'
 
+import { FaRegPaperPlane } from 'react-icons/fa'
+
 /* ssr */
 import fs from 'fs'
 import path from 'path'
@@ -14,6 +16,9 @@ import Footer from '../src/modules/footer'
 import { Flex, Box } from 'reflexbox'
 import Container from '../src/elements/container'
 import WaveContainer from '../src/elements/wave-container'
+
+import Button from '../src/elements/button'
+import TextInput from '../src/elements/text-input'
 
 /* Elements */
 import Slider from '../src/elements/slider'
@@ -129,37 +134,55 @@ const Home = ({ data: _data }) => {
           }}
         >
           <Bar>
-            <Box width={1}>
-
-              <input
+            <Flex
+              width={1}
+              alignItems='center'
+              justifyContent='center'
+              sx={{
+                mt: -40,
+                textAlign: 'center',
+                px: 'md'
+              }}
+            >
+              <TextInput
                 placeholder='username'
                 onChange={e => setUsername(e.target.value)}
-              ></input>
-              <label>
-                {username}
-              </label>
-              <button onClick={async e => {
-                setLoading(true)
-                const res = await fetch(`/api/user/${username}`)
-                const data = await res.json()
-                setHighlighted(null)
-                setSelected(null)
-                setData(data)
-                setLoading(false)
-              }}>
-                submit
-              </button>
+              />
 
+              <Button
+                sx={{
+                  marginLeft: 'md',
+                  borderRadius: 'round',
+                  padding: 'sm'
+                }}
+                onClick={async e => {
+                  setLoading(true)
+                  const res = await fetch(`/api/user/${username}`)
+                  const data = await res.json()
+                  setHighlighted(null)
+                  setSelected(null)
+                  setData(data)
+                  setLoading(false)
+                }}
+              >
+                <FaRegPaperPlane />
+              </Button>
+            </Flex>
+
+            <Box
+              sx={{ my: 'lg' }}
+              width={1}
+            >
+              <SliderBox>
+                <Slider from={0.1} to={0.4} step={0.05} value={smooth} onChange={setSmooth} />
+              </SliderBox>
+              <SliderBox>
+                <Slider from={9} to={21} step={3} value={range} onChange={setRange} />
+              </SliderBox>
+              <SliderBox>
+                <Slider from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity} />
+              </SliderBox>
             </Box>
-            <SliderBox>
-              <Slider from={0.1} to={0.4} step={0.05} value={smooth} onChange={setSmooth} />
-            </SliderBox>
-            <SliderBox>
-              <Slider from={9} to={21} step={3} value={range} onChange={setRange} />
-            </SliderBox>
-            <SliderBox>
-              <Slider from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity} />
-            </SliderBox>
           </Bar>
         </WaveContainer>
         <Footer />

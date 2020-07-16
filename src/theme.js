@@ -30,8 +30,8 @@ export default {
 
   space: {
     sm: 8,
-    md: 36,
-    lg: 48
+    md: 16,
+    lg: 32
   },
 
   colors: {
@@ -39,6 +39,12 @@ export default {
     secondary: '#442371',
     background: '#ecc5b2',
     grey: '#e6b8a2',
+    // primary: '#21A0A0',
+    // secondary: '#046865',
+    // background: '#FCFFF7',
+    // grey: '#f2f5ea',
+    // 'fg-on-primary': '#FCFFF7',
+
     // primary: '#ee4266',
     // secondary: '#ff686b',
     // background: '#F2F5EA',
@@ -52,6 +58,8 @@ export default {
     heading: `2px 2px 0 background, -2px 2px 0 background, -2px -2px 0 background, 2px -2px 0 background, 4px 4px 0 primary, 5px 5px 0 primary, 6px 6px 0 primary, 7px 7px 0 primary`,
     thumb: `0 0 0 4px background`,
     'thumb-focus': `0 0 0 2px background, 0 0 0 4px primary, 0 0 0 8px background`,
+    'input-focus': `0 0 0 4px background, 0 0 0 8px primary`,
+    'input-hover': `0 0 0 2px background, 0 0 0 4px primary`,
     box: `1px 2px 16px rgba(44, 64, 53, 0.2), 6px 8px 22px rgba(44, 64, 53, 0.1)`
   },
 
