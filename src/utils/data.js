@@ -35,7 +35,7 @@ export const pivot = (data) => Object
     }
   }, {})
 
-const filter = (data) => Object
+export const filter = (data) => Object
   .entries(data)
   .reduce((acc, [year, months]) => {
     return Max(Object.values(months)) > 0
@@ -52,7 +52,7 @@ const normalise = (data, scale = 0, range = 1) => Object
     const nVec = (v, i, arr) => {
       const a = 2 * i * Math.PI / arr.length
       const n = (range * (v - min) / (max - min)) + scale
-      return [-n * Math.sin(a), n * Math.cos(a)]
+      return [-n * Math.sin(a), n * Math.cos(a)].map(i => i.toFixed(2))
     }
 
     return {
