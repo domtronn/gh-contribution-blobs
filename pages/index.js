@@ -4,7 +4,7 @@ import { Fragment, useState } from 'react'
 
 import fetch from 'unfetch'
 
-import { pivotAndFilter } from '../src/utils/data'
+import { pivotAndFilter } from './api/utils/data'
 import { isEmpty } from '../src/utils/obj'
 
 import { FaRegPaperPlane } from 'react-icons/fa'

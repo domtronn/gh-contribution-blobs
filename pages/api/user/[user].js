@@ -1,11 +1,10 @@
 import { GraphQLClient } from 'graphql-request'
-import { userQuery, yearsQuery, contributionsQuery } from './gh-query'
+import { userQuery, yearsQuery, contributionsQuery } from '../utils/gh-query'
 
-import { pivotAndFilter } from '../../../src/utils/data'
-import { path } from './obj'
+import { pivotAndFilter } from '../utils/data'
+import { path } from '../utils/obj'
 
 const { GH_TOKEN: token } = process.env
-
 const c = new GraphQLClient(
   'https://api.github.com/graphql',
   {
@@ -21,6 +20,7 @@ export default async (req, res) => {
   } = req
 
   res.setHeader('Content-Type', 'application/json')
+  res.setHeader('Cache-Control', 'max-age=86400, public')
   res.statusCode = 404
 
   /* Check to see whether the user exists */
@@ -45,6 +45,6 @@ export default async (req, res) => {
     res.statusCode = 200
     res.end(JSON.stringify(result))
   } catch (e) {
-    res.end({ err: 'error' })
+    res.end(JSON.stringify({ err: 'error' }))
   }
 }

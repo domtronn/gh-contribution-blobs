@@ -35,3 +35,11 @@ ${querys
         .replace(/{{NYEAR}}/g, y[y.length - i - 1])
     ))
 }
+
+export const suggestQuery = (id) => base(`search(query: "${id} in:user", first: 10, type: USER) {
+  nodes {
+    ...on User {
+      login
+    }
+  }
+}`)
