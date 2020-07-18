@@ -42,6 +42,7 @@ const cpoint = (curr, prev = curr, next = curr, smoothing = 0.2, end = false) =>
   const a = oA + (end ? Math.PI : 0)
   const l = oL * smoothing
 
+  /* Add randomness here to make pretty flower patterns */
   const x = curr[0] + Math.cos(a) * l
   const y = curr[1] + Math.sin(a) * l
 

@@ -43,7 +43,7 @@ export default ({ id, children, getItemValue, renderItem: f, ...props }) => (
 
             '::after': {
               content: '""',
-              background: 'linear-gradient(90deg, transparent, white, white, white)',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0.01), white, white, white)',
               height: '100%',
               width: ({ space }) => space.lg,
               position: 'absolute',
