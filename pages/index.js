@@ -231,7 +231,7 @@ const Home = ({ data: _data }) => {
               </TextAutocomplete>
             </Flex>
 
-            <Flex
+            <Box
               alignItems='center'
               sx={{ mt: 'md', mb: 'lg' }}
               width={1}
@@ -254,7 +254,7 @@ const Home = ({ data: _data }) => {
                   Opacity
                 </Slider>
               </SliderBox>
-            </Flex>
+            </Box>
 
             <Flex
               width={1}

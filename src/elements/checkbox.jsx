@@ -5,7 +5,7 @@ import { Flex } from 'reflexbox'
 import { shadow } from '../utils/theme-ui'
 import Label from './label'
 
-const size = 48
+const size = ['2em', '3em']
 
 export default ({ on: On = () => {}, off: Off = () => {}, id, children, ...props }) => (
   <Flex
@@ -51,13 +51,13 @@ export default ({ on: On = () => {}, off: Off = () => {}, id, children, ...props
           left: 0,
           top: 0,
           backgroundColor: 'background',
-          borderRadius: 'lg',
-          borderWidth: 3,
+          borderRadius: ['md', 'lg'],
+          borderWidth: [2, 3],
           borderColor: 'primary',
           borderStyle: 'solid'
         },
         ':checked + div': {
-          borderWidth: size / 2
+          borderWidth: ['1em', '1.5em']
         },
 
         ':checked ~ .on': { display: 'block' },

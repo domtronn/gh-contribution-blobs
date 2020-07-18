@@ -17,8 +17,8 @@ export default ({
       onMouseDown={() => setMd(true)}
       onMouseUp={() => setMd(false)}
       sx={{
-        width: '3em',
-        height: '3em',
+        width: ['2.5em', '3em'],
+        height: ['2.5em', '3em'],
         display: 'inline-flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -26,7 +26,7 @@ export default ({
 
         fontFamily: 'base',
         marginY: '0',
-        marginX: 'md',
+        marginX: ['sm', 'md'],
         borderRadius: 'round',
         backgroundColor: 'primary',
         color: 'background',
