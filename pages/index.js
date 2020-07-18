@@ -31,6 +31,7 @@ import Main from '../src/elements/main'
 
 /* Compounds */
 import CBlob from '../src/compounds/contribution-blob'
+import CScale from '../src/compounds/contribution-scale'
 import Bar from '../src/compounds/bar'
 import NavBar from '../src/compounds/navbar'
 
@@ -175,7 +176,9 @@ const Home = ({ data: _data }) => {
               range={range}
               data={data}
               highlight={highlights}
-            />
+            >
+              <CScale />
+            </CBlob>
           </div>
         </Container>
 

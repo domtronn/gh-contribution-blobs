@@ -31,7 +31,8 @@ export default ({
 
   highlight = [],
 
-  className
+  className,
+  children
 }) => {
   const { theme } = useThemeUI()
 
@@ -45,7 +46,7 @@ export default ({
       xmlns='http://www.w3.org/2000/svg'
       height='80vh'
       sx={{
-        marginY: [-size * 2, -size * 1.2],
+        marginY: [-size * 2, -size * 0.8],
         alignSelf: 'center',
         overflow: 'visible',
         maxWidth: ['100%', '100%', '160vh']
@@ -54,33 +55,34 @@ export default ({
       className={className}
     >
       {Object
-       .entries(data)
-       .reverse()
-       .map(([year, d], i, arr) => (
-         <Blob
-           data-year={year}
-           key={i}
-           data={d}
-           size={size / 2}
-           scale={
-             highlight.length
-               ? 0
-               : 0.2 + (0.8 - (i / arr.length))
-           }
-           smooth={_smooth}
-           highlight={highlight.includes(year)}
-           fill={theme.colors[i % 2 ? 'primary' : 'secondary']}
-           opacity={_opacity}
-           sx={{
-             transition:
+        .entries(data)
+        .reverse()
+        .map(([year, d], i, arr) => (
+          <Blob
+            data-year={year}
+            key={i}
+            data={d}
+            size={size / 2}
+            scale={
+              highlight.length
+                ? 0
+                : 0.2 + (0.8 - (i / arr.length))
+            }
+            smooth={_smooth}
+            highlight={highlight.includes(year)}
+            fill={theme.colors[i % 2 ? 'primary' : 'secondary']}
+            opacity={_opacity}
+            sx={{
+              transition:
              highlight.length && !highlight.includes(year)
-               ? `all 0.5s ease-in-out`
+               ? 'all 0.5s ease-in-out'
                : highlight.includes(year)
-               ? `all 0.8s 0s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`
-               : `all 0.8s ${0.05 * (arr.length - i)}s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`
-           }}
-         />
-       ))}
+                 ? 'all 0.8s 0s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out'
+                 : `all 0.8s ${0.05 * (arr.length - i)}s cubic-bezier(.77,2.03,.68,.56), opacity 0.4s ease-in-out`
+            }}
+          />
+        ))}
+      {children}
     </svg>
   )
 }
