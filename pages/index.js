@@ -23,6 +23,7 @@ import WaveContainer from '../src/elements/wave-container'
 
 import Button from '../src/elements/button'
 import TextInput from '../src/elements/text-input'
+import TextAutocomplete from '../src/elements/text-autocomplete'
 
 /* Elements */
 import Slider from '../src/elements/slider'
@@ -64,8 +65,43 @@ const Home = ({ data: _data }) => {
 
   /* Form control */
   const [username, setUsername] = useState()
+  const [suggestions, setSuggestions] = useState([])
   const [data, setData] = useState(_data)
   const [loading, setLoading] = useState(false)
+
+  const [rt, setrt] = useState(null)
+
+  /** Handlers */
+  const handleSubmit = async (value) => {
+    setLoading(true)
+    try {
+      const res = await fetch(`/api/user/${value}`)
+      const data = await res.json()
+      setHighlighted(null)
+      setSelected(null)
+      setData(data)
+      setLoading(false)
+    } catch (e) {
+      setHighlighted(null)
+      setSelected(null)
+      setLoading(false)
+      setData({})
+    }
+  }
+
+  const handleSearch = async (value) => {
+    setUsername(value)
+    clearTimeout(rt)
+    setrt(setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/suggest/${value}`)
+        const data = await res.json()
+        setSuggestions(data)
+      } catch (e) {
+        setSuggestions([])
+      }
+    }, 300))
+  }
 
   return (
     <Fragment>
@@ -169,32 +205,29 @@ const Home = ({ data: _data }) => {
                 px: 'md'
               }}
             >
-              <TextInput
-                id='github-username'
-                placeholder='username'
-                onChange={e => setUsername(e.target.value)}
+              <TextAutocomplete
+                value={username}
+                items={suggestions}
+                onSelect={(value) => {
+                  console.log(value)
+                  setUsername(value)
+                  handleSubmit(value)
+                }}
+                onChange={(e, value) => handleSearch(value)}
+                getItemValue={({ login = '' }) => login}
+                renderItem={({ login, avatarUrl }) => (
+                  <>
+                    <img sx={{ height: 20, width: 20, mr: 'md', borderRadius: 'round' }} src={avatarUrl} />
+                    {login}
+                  </>
+                )}
               >
-                GitHub username
-              </TextInput>
+                Github username
+              </TextAutocomplete>
+
               <Button
                 aria-label='search-user'
-                onClick={async e => {
-                  setLoading(true)
-                  try {
-                    const res = await fetch(`/api/user/${username}`)
-                    const data = await res.json()
-                    setHighlighted(null)
-                    setSelected(null)
-                    setData(data)
-                    setLoading(false)
-                  } catch (e) {
-                    setHighlighted(null)
-                    setSelected(null)
-                    setLoading(false)
-                    setData({})
-                  }
-
-                }}
+                onClick={(e) => handleSubmit(username)}
               >
                 <FaRegPaperPlane size='1.2em' />
               </Button>

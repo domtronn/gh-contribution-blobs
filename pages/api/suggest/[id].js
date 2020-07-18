@@ -23,9 +23,14 @@ export default async (req, res) => {
   res.setHeader('Cache-Control', 'max-age=86400, public')
   res.statusCode = 404
 
+  if (!id.length) {
+    res.statusCode = 200
+    res.end('[]')
+  }
+
   try {
     const { search } = await c.request(suggestQuery(id))
-    const data = search.nodes.map(({ login }) => login)
+    const data = search.nodes
 
     res.statusCode = 200
     res.end(JSON.stringify(data))

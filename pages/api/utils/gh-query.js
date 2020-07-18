@@ -40,6 +40,7 @@ export const suggestQuery = (id) => base(`search(query: "${id} in:user", first: 
   nodes {
     ...on User {
       login
+      avatarUrl
     }
   }
 }`)
