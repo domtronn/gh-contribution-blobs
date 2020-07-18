@@ -65,7 +65,7 @@ export default ({
            scale={
              highlight.length
                ? 0
-               : 0.3 + (0.1 * (arr.length - i))
+               : 0.2 + (0.8 - (i / arr.length))
            }
            smooth={_smooth}
            highlight={highlight.includes(year)}
