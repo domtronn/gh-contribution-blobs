@@ -28,7 +28,7 @@ import TextAutocomplete from '../src/elements/text-autocomplete'
 /* Elements */
 import Slider from '../src/elements/slider'
 import Loader from '../src/elements/loader'
-import Error from '../src/elements/Error'
+import Error from '../src/elements/error'
 import Main from '../src/elements/main'
 
 /* Compounds */
@@ -217,7 +217,7 @@ const Home = ({ data: _data }) => {
                 getItemValue={({ login = '' }) => login}
                 renderItem={({ login, avatarUrl }) => (
                   <>
-                    <img sx={{ height: 20, width: 20, mr: 'md', borderRadius: 'round' }} src={avatarUrl} />
+                    <img sx={{ height: 32, width: 32, mr: 'md', borderRadius: 'round' }} src={avatarUrl} />
                     {login}
                   </>
                 )}
