@@ -38,7 +38,7 @@ export const filter = (data) => Object
   .entries(data)
   .reduce((acc, [year, months]) => {
     return Max(Object.values(months)) > 0
-      ? { ...acc, [year]: months }
+      ? { ...acc, [year]: Object.values(months) }
       : acc
   }, {})
 

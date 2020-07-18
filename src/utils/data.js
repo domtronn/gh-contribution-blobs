@@ -4,8 +4,8 @@ const Min = (arr) => arr.reduce((a, b) => Math.min(a, b), Infinity)
 export const normalise = (data, scale = 0, range = 1) => Object
   .entries(data)
   .reduce((acc, [year, months]) => {
-    const min = Min(Object.values(months))
-    const max = Max(Object.values(months))
+    const min = Min(months)
+    const max = Max(months)
 
     const nVec = (v, i, arr) => {
       const a = 2 * i * Math.PI / arr.length
@@ -15,8 +15,6 @@ export const normalise = (data, scale = 0, range = 1) => Object
 
     return {
       ...acc,
-      [year]: Object
-        .values(months)
-        .map(nVec)
+      [year]: months.map(nVec)
     }
   }, {})

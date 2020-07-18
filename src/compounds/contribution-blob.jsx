@@ -48,7 +48,7 @@ export default ({
         marginY: [-size * 2, -size * 1.2],
         alignSelf: 'center',
         overflow: 'visible',
-        maxWidth: ['100%','100%','160vh']
+        maxWidth: ['100%', '100%', '160vh']
       }}
       viewBox={`0 0 ${size} ${size}`}
       className={className}

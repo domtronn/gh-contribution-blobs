@@ -15,10 +15,8 @@
     "react-dom": "^16.13.0",
     "react-icons": "^3.10.0",
     "reflexbox": "^4.0.6",
-    "swr": "^0.2.3",
     "theme-ui": "^0.3.1",
     "typeface-abril-fatface": "^0.0.72",
-    "typeface-fredoka-one": "^0.0.72",
     "typeface-inter": "^3.12.0",
     "unfetch": "^4.1.0"
   }
