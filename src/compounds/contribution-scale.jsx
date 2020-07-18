@@ -32,7 +32,7 @@ export default ({
             opacity: 0,
             animation: `fadeIn 0.8s ${Delays[i]}s ease-in-out forwards`,
             letterSpacing: '0.2em',
-            fontSize: [3, 3, 2]
+            fontSize: [3, 2, 2]
           }}
         >
           {month(i)}
