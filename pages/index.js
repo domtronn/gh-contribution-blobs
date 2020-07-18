@@ -266,16 +266,16 @@ const Home = ({ data: _data }) => {
                 aria-label='download-svg'
                 onClick={() => download(`${username || 'blob'}.svg`, 'contribution-blob', cleanSVG)}
               >
-                <RiDownloadCloud2Line size='1.8em' />
+                <RiDownloadCloud2Line sx={{ width: '100%', height: '100%', p: 4 }} />
               </Button>
               <Button aria-label='download-svg'>
-                <RiCodeLine size='2em' />
+                <RiCodeLine sx={{ width: '100%', height: '100%', p: 4 }} />
               </Button>
               <Button
                 aria-label='change-theme'
                 onClick={() => setThemeId(themeId + 1)}
               >
-                <RiBrushLine size='2em' />
+                <RiBrushLine sx={{ width: '100%', height: '100%', p: 4 }} />
               </Button>
               <Checkbox
                 aria-label='enable-calendar-guide'

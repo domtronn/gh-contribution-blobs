@@ -11,7 +11,8 @@ export default () => (
       justifyContent: 'center',
       alignItems: 'flex-end',
       backgroundColor: 'primary',
-      height: 200
+      height: 200,
+      pb: ['md', 'md', 0]
     }}
   >
 
