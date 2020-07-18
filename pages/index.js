@@ -7,7 +7,7 @@ import fetch from 'unfetch'
 import { pivotAndFilter } from './api/utils/data'
 import { isEmpty } from '../src/utils/obj'
 
-import { RiCalendarCheckLine, RiCalendarEventLine, RiCodeLine, RiDownloadCloud2Line } from 'react-icons/ri'
+import { RiCalendarCheckLine, RiCalendarEventLine, RiCodeLine, RiDownloadCloud2Line, RiBrushLine } from 'react-icons/ri'
 
 /* ssr */
 import fs from 'fs'
@@ -60,6 +60,7 @@ const Home = ({ data: _data }) => {
   const [smooth, setSmooth] = useState(0.2)
   const [opacity, setOpacity] = useState(0.4)
   const [showGuide, setShowGuide] = useState(false)
+  const [themeId, setThemeId] = useState(0)
 
   /* Nav control */
   const [highlighted, setHighlighted] = useState(null)
@@ -120,7 +121,7 @@ const Home = ({ data: _data }) => {
         <meta name='theme-color' content='#ffffff' />
       </Head>
 
-      <Main>
+      <Main themeId={themeId}>
         <Box sx={{ zIndex: 'max', position: 'relative' }}>
           <Styled.h1
             sx={{
@@ -270,7 +271,14 @@ const Home = ({ data: _data }) => {
               <Button aria-label='download-svg'>
                 <RiCodeLine size='2em' />
               </Button>
+              <Button
+                aria-label='change-theme'
+                onClick={() => setThemeId(themeId + 1)}
+              >
+                <RiBrushLine size='2em' />
+              </Button>
               <Checkbox
+                aria-label='enable-calendar-guide'
                 onClick={() => setShowGuide(!showGuide)}
                 on={RiCalendarCheckLine}
                 off={RiCalendarEventLine}

@@ -26,6 +26,7 @@ export default {
   radii: {
     sm: 4,
     md: 6,
+    lg: 16,
     round: '50%'
   },
 
@@ -40,26 +41,9 @@ export default {
   colors: {
     primary: '#4b0d67',
     secondary: '#442371',
-    background: '#ecc5b2',
-    grey: '#e6b8a2',
-    'fg-on-primary': '#ecc5b2',
-
-    // primary: '#3840ff',
-    // secondary: '#3840ff',
-    // background: '#fff',
-    // grey: '#d9d9d9',
-    // 'fg-on-primary': '#d9d9d9',
-
-    // primary: '#21A0A0',
-    // secondary: '#046865',
-    // background: '#FCFFF7',
-    // grey: '#f2f5ea',
-    // 'fg-on-primary': '#FCFFF7',
-
-    // primary: '#ee4266',
-    // secondary: '#ff686b',
-    // background: '#F2F5EA',
-    // grey: '#D6DBD2',
+    background: '#fbe6cd',
+    grey: '#f7d6b5',
+    'fg-on-primary': '#fbe6cd',
     fg: '#111'
   },
 

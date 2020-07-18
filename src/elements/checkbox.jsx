@@ -51,7 +51,7 @@ export default ({ on: On = () => {}, off: Off = () => {}, id, children, ...props
           left: 0,
           top: 0,
           backgroundColor: 'background',
-          borderRadius: 'round',
+          borderRadius: 'lg',
           borderWidth: 3,
           borderColor: 'primary',
           borderStyle: 'solid'
