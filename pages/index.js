@@ -44,10 +44,11 @@ const cleanSVG = (txt = '') => txt
   .replace(/ class=".+?"/g, '')
   .replace(/ data-year=".+?"/g, '')
 
-const SliderBox = ({ children }) => (
+const SliderBox = ({ children, className }) => (
   <Box
-    width={[1, 1 / 2, 1 / 4]}
-    sx={{ px: [0, 0, 'md'], my: ['md', 0, 0], display: 'inline-block' }}
+    width={[1, 1 / 3, 1 / 3]}
+    sx={{ px: [0, 0, 'md'], my: ['md', 0, 0], display: 'inline-block', textAlign: 'center' }}
+    className={className}
   >
     {children}
   </Box>
@@ -229,36 +230,30 @@ const Home = ({ data: _data }) => {
               </TextAutocomplete>
             </Flex>
 
-            <Box
-              sx={{ my: 'lg' }}
+            <Flex
+              alignItems='center'
+              sx={{ mt: 'md', mb: 'lg' }}
               width={1}
             >
               <SliderBox>
+                <p sx={{ fontSize: '0.8em', marginBottom: 'sm' }}>Smoothness</p>
                 <Slider id='smoothness' from={0.1} to={0.4} step={0.05} value={smooth} onChange={setSmooth}>
                   Smoothness
                 </Slider>
               </SliderBox>
               <SliderBox>
+                <p sx={{ fontSize: '0.8em', marginBottom: 'sm' }}>Variance</p>
                 <Slider id='variance' from={9} to={21} step={3} value={range} onChange={setRange}>
                   Maxima variance
                 </Slider>
               </SliderBox>
               <SliderBox>
+                <p sx={{ fontSize: '0.8em', marginBottom: 'sm' }}>Opacity</p>
                 <Slider id='opacity' from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity}>
                   Opacity
                 </Slider>
               </SliderBox>
-              <SliderBox>
-                <Styled.p>Click me</Styled.p>
-                <Checkbox
-                  onClick={() => setShowGuide(!showGuide)}
-                  on={RiCalendarCheckLine}
-                  off={RiCalendarEventLine}
-                >
-                  Show guide
-                </Checkbox>
-              </SliderBox>
-            </Box>
+            </Flex>
 
             <Flex
               width={1}
@@ -275,6 +270,13 @@ const Home = ({ data: _data }) => {
               <Button aria-label='download-svg'>
                 <RiCodeLine size='2em' />
               </Button>
+              <Checkbox
+                onClick={() => setShowGuide(!showGuide)}
+                on={RiCalendarCheckLine}
+                off={RiCalendarEventLine}
+              >
+                Show months guide
+              </Checkbox>
             </Flex>
 
           </Bar>

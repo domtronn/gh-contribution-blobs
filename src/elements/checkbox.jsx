@@ -5,11 +5,12 @@ import { Flex } from 'reflexbox'
 import { shadow } from '../utils/theme-ui'
 import Label from './label'
 
-const size = 32
+const size = 48
 
 export default ({ on: On = () => {}, off: Off = () => {}, id, children, ...props }) => (
   <Flex
     sx={{
+      marginX: 'md',
       position: 'relative',
       width: size,
       height: size,
@@ -49,8 +50,9 @@ export default ({ on: On = () => {}, off: Off = () => {}, id, children, ...props
           position: 'absolute',
           left: 0,
           top: 0,
+          backgroundColor: 'background',
           borderRadius: 'round',
-          borderWidth: 2,
+          borderWidth: 3,
           borderColor: 'primary',
           borderStyle: 'solid'
         },

@@ -93,6 +93,8 @@ export default {
       fontSize: ['sm', 'md', 'lg']
     },
     p: {
+      margin: 0,
+      padding: 0,
       lineHeight: 1.8,
       fontSize: ['xs', 'base']
     }

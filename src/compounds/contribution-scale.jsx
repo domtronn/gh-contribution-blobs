@@ -9,7 +9,7 @@ const Months = flip([
   'August', 'September', 'October', 'November', 'December'
 ])
 
-const Delays = flip(Array(12).fill().map((_, i) => i * 0.1))
+const Delays = flip(Array(12).fill().map((_, i) => i * 0.05))
 
 export default ({
   size = 80,

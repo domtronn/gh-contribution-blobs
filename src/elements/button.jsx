@@ -43,11 +43,11 @@ export default ({
         ':hover': {
           transform: 'scale(1.2)',
           boxShadow: shadow('box'),
-          cursor: 'pointer',
+          cursor: 'pointer'
         },
 
         ':focus': {
-          outline: 'none',
+          outline: 'none'
         },
 
         ':active': {
