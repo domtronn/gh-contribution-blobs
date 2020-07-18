@@ -209,13 +209,12 @@ const Home = ({ data: _data }) => {
                 value={username}
                 items={suggestions}
                 onSelect={(value) => {
-                  console.log(value)
                   setUsername(value)
                   handleSubmit(value)
                 }}
                 onChange={(e, value) => handleSearch(value)}
                 getItemValue={({ login = '' }) => login}
-                renderItem={({ login, avatarUrl }) => (
+                renderItem={({ login, avatarUrl } = {}) => (
                   <>
                     <img sx={{ height: 32, width: 32, mr: 'md', borderRadius: 'round' }} src={avatarUrl} />
                     {login}
@@ -224,13 +223,6 @@ const Home = ({ data: _data }) => {
               >
                 Github username
               </TextAutocomplete>
-
-              <Button
-                aria-label='search-user'
-                onClick={(e) => handleSubmit(username)}
-              >
-                <FaRegPaperPlane size='1.2em' />
-              </Button>
             </Flex>
 
             <Box

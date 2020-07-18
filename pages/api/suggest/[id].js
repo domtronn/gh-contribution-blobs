@@ -30,7 +30,9 @@ export default async (req, res) => {
 
   try {
     const { search } = await c.request(suggestQuery(id))
-    const data = search.nodes
+    const data = search
+      .nodes
+      .filter(({ login }) => login)
 
     res.statusCode = 200
     res.end(JSON.stringify(data))

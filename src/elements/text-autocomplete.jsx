@@ -8,7 +8,7 @@ import Autocomplete from 'react-autocomplete'
 
 import { shadow } from '../utils/theme-ui'
 
-export default ({ id, children, renderItem: f, ...props }) => (
+export default ({ id, children, getItemValue, renderItem: f, ...props }) => (
   <Flex
     sx={{
       position: 'relative',
@@ -19,6 +19,7 @@ export default ({ id, children, renderItem: f, ...props }) => (
     </Label>
     <Autocomplete
       {...props}
+      getItemValue={getItemValue}
       renderMenu={items => (
         <Flex
           sx={{
@@ -56,10 +57,19 @@ export default ({ id, children, renderItem: f, ...props }) => (
       renderInput={Input}
       renderItem={item => (
         <Flex
+          aria-label={getItemValue(item)}
+          aria-role='button'
           alignItems='center'
           sx={{
+            position: 'relative',
+            transition: 'transform 0.4s ease',
+            '*': { transition: 'transform 0.4s ease' },
             ':hover': {
-              cursor: 'pointer'
+              color: 'primary',
+              cursor: 'pointer',
+              img: {
+                transform: 'scale(1.4)'
+              },
             },
             paddingX: 'md',
             paddingY: 'sm',
