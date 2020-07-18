@@ -39,6 +39,7 @@ import { shadow } from '../src/utils/theme-ui'
 import { download } from '../src/utils/download'
 
 const cleanSVG = (txt = '') => txt
+  .replace(/<text.*?<\/text>/g, '')
   .replace(/ class=".+?"/g, '')
   .replace(/ data-year=".+?"/g, '')
 
