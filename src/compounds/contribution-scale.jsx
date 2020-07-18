@@ -9,6 +9,8 @@ const Months = flip([
   'August', 'September', 'October', 'November', 'December'
 ])
 
+const Delays = flip(Array(12).fill().map((_, i) => i * 0.1))
+
 export default ({
   size = 80,
   className
@@ -27,6 +29,8 @@ export default ({
           data-month={Months[i].toLowerCase()}
           fill={theme.colors.fg}
           sx={{
+            opacity: 0,
+            animation: `fadeIn 0.8s ${Delays[i]}s ease-in-out forwards`,
             letterSpacing: '0.2em',
             fontSize: [3, 3, 2]
           }}

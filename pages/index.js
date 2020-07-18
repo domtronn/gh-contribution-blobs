@@ -7,7 +7,7 @@ import fetch from 'unfetch'
 import { pivotAndFilter } from './api/utils/data'
 import { isEmpty } from '../src/utils/obj'
 
-import { FiDownloadCloud, FiCode } from 'react-icons/fi'
+import { RiCalendarCheckLine, RiCalendarEventLine, RiCodeLine, RiDownloadCloud2Line } from 'react-icons/ri'
 
 /* ssr */
 import fs from 'fs'
@@ -22,6 +22,7 @@ import WaveContainer from '../src/elements/wave-container'
 
 import Button from '../src/elements/button'
 import TextAutocomplete from '../src/elements/text-autocomplete'
+import Checkbox from '../src/elements/checkbox'
 
 /* Elements */
 import Slider from '../src/elements/slider'
@@ -45,7 +46,7 @@ const cleanSVG = (txt = '') => txt
 
 const SliderBox = ({ children }) => (
   <Box
-    width={[1, 1 / 3, 1 / 3]}
+    width={[1, 1 / 2, 1 / 4]}
     sx={{ px: [0, 0, 'md'], my: ['md', 0, 0], display: 'inline-block' }}
   >
     {children}
@@ -57,6 +58,7 @@ const Home = ({ data: _data }) => {
   const [range, setRange] = useState(15)
   const [smooth, setSmooth] = useState(0.2)
   const [opacity, setOpacity] = useState(0.4)
+  const [showGuide, setShowGuide] = useState(false)
 
   /* Nav control */
   const [highlighted, setHighlighted] = useState(null)
@@ -178,7 +180,7 @@ const Home = ({ data: _data }) => {
               data={data}
               highlight={highlights}
             >
-              <CScale />
+              {showGuide && <CScale />}
             </CBlob>
           </div>
         </Container>
@@ -246,6 +248,16 @@ const Home = ({ data: _data }) => {
                   Opacity
                 </Slider>
               </SliderBox>
+              <SliderBox>
+                <Styled.p>Click me</Styled.p>
+                <Checkbox
+                  onClick={() => setShowGuide(!showGuide)}
+                  on={RiCalendarCheckLine}
+                  off={RiCalendarEventLine}
+                >
+                  Show guide
+                </Checkbox>
+              </SliderBox>
             </Box>
 
             <Flex
@@ -258,10 +270,10 @@ const Home = ({ data: _data }) => {
                 aria-label='download-svg'
                 onClick={() => download(`${username || 'blob'}.svg`, 'contribution-blob', cleanSVG)}
               >
-                <FiDownloadCloud size='1.8em' />
+                <RiDownloadCloud2Line size='1.8em' />
               </Button>
               <Button aria-label='download-svg'>
-                <FiCode size='2em' />
+                <RiCodeLine size='2em' />
               </Button>
             </Flex>
 
