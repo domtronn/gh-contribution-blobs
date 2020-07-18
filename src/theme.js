@@ -5,7 +5,7 @@ export default {
   ],
 
   fonts: {
-    base: "Inter, sans-serif",
+    base: 'Inter, sans-serif',
     heading: "'Abril Fatface', sans-serif"
   },
 
@@ -60,17 +60,17 @@ export default {
     // secondary: '#ff686b',
     // background: '#F2F5EA',
     // grey: '#D6DBD2',
-    fg: '#111',
+    fg: '#111'
   },
 
   shadows: {
     text: '4px 4px 12px #e5ece9',
-    heading: `2px 2px 0 background, -2px 2px 0 background, -2px -2px 0 background, 2px -2px 0 background, 4px 4px 0 primary, 5px 5px 0 primary, 6px 6px 0 primary, 7px 7px 0 primary`,
-    thumb: `0 0 0 4px background`,
-    'thumb-focus': `0 0 0 2px background, 0 0 0 4px primary, 0 0 0 8px background`,
-    'input-focus': `0 0 0 4px background, 0 0 0 8px primary`,
-    'input-hover': `0 0 0 2px background, 0 0 0 4px primary`,
-    box: `1px 2px 16px rgba(44, 64, 53, 0.2), 6px 8px 22px rgba(44, 64, 53, 0.1)`
+    heading: '2px 2px 0 background, -2px 2px 0 background, -2px -2px 0 background, 2px -2px 0 background, 4px 4px 0 primary, 5px 5px 0 primary, 6px 6px 0 primary, 7px 7px 0 primary',
+    thumb: '0 0 0 4px background',
+    'thumb-focus': '0 0 0 2px background, 0 0 0 4px primary, 0 0 0 8px background',
+    'input-focus': '0 0 0 4px background, 0 0 0 8px primary',
+    'input-hover': '0 0 0 2px background, 0 0 0 4px primary',
+    box: '1px 2px 16px rgba(44, 64, 53, 0.2), 6px 8px 22px rgba(44, 64, 53, 0.1)'
   },
 
   styles: {

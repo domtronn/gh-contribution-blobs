@@ -1,13 +1,12 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 
 import fetch from 'unfetch'
 
 import { pivotAndFilter } from './api/utils/data'
 import { isEmpty } from '../src/utils/obj'
 
-import { FaRegPaperPlane } from 'react-icons/fa'
 import { FiDownloadCloud, FiCode } from 'react-icons/fi'
 
 /* ssr */
@@ -22,7 +21,6 @@ import Container from '../src/elements/container'
 import WaveContainer from '../src/elements/wave-container'
 
 import Button from '../src/elements/button'
-import TextInput from '../src/elements/text-input'
 import TextAutocomplete from '../src/elements/text-autocomplete'
 
 /* Elements */
@@ -32,7 +30,7 @@ import Error from '../src/elements/error'
 import Main from '../src/elements/main'
 
 /* Compounds */
-import CBlob from '../src/compounds/contribution-blob';
+import CBlob from '../src/compounds/contribution-blob'
 import Bar from '../src/compounds/bar'
 import NavBar from '../src/compounds/navbar'
 
@@ -45,7 +43,7 @@ const cleanSVG = (txt = '') => txt
 
 const SliderBox = ({ children }) => (
   <Box
-    width={[1, 1/3, 1/3]}
+    width={[1, 1 / 3, 1 / 3]}
     sx={{ px: [0, 0, 'md'], my: ['md', 0, 0], display: 'inline-block' }}
   >
     {children}
@@ -104,17 +102,17 @@ const Home = ({ data: _data }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Head>
         <title>Git.Blobs</title>
-        <meta name="description" content="Generative art built from your GitHub commit history" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name='description' content='Generative art built from your GitHub commit history' />
+        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+        <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+        <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+        <link rel='manifest' href='/site.webmanifest' />
+        <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
+        <meta name='msapplication-TileColor' content='#da532c' />
+        <meta name='theme-color' content='#ffffff' />
       </Head>
 
       <Main>
@@ -157,8 +155,7 @@ const Home = ({ data: _data }) => {
             }}
             animate={loading}
             data={data}
-          >
-          </Loader>
+          />
 
           <NavBar
             sx={{ right: 0, opacity: loading ? 0 : 1 }}
@@ -169,7 +166,7 @@ const Home = ({ data: _data }) => {
           <div
             sx={{
               transform: loading ? 'scale(0)' : 'scale(1)',
-              marginX: [0, 'auto'],
+              marginX: [0, 'auto']
             }}
           >
             <CBlob
@@ -191,7 +188,7 @@ const Home = ({ data: _data }) => {
             position: 'relative',
             width: '100%',
             backgroundColor: 'grey',
-            minHeight: 320,
+            minHeight: 320
           }}
         >
           <Bar>
@@ -236,12 +233,12 @@ const Home = ({ data: _data }) => {
                 </Slider>
               </SliderBox>
               <SliderBox>
-                <Slider id='variance' from={9} to={21} step={3} value={range} onChange={setRange} >
+                <Slider id='variance' from={9} to={21} step={3} value={range} onChange={setRange}>
                   Maxima variance
                 </Slider>
               </SliderBox>
               <SliderBox>
-                <Slider id='opacity' from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity} >
+                <Slider id='opacity' from={0.1} to={0.9} step={0.2} value={opacity} onChange={setOpacity}>
                   Opacity
                 </Slider>
               </SliderBox>
@@ -269,11 +266,11 @@ const Home = ({ data: _data }) => {
           <Container
             sx={{
               mt: 'xl',
-              pb: 'xxl',
+              pb: 'xxl'
             }}
           >
             <Box
-              width={[1,1,2/3]}
+              width={[1, 1, 2 / 3]}
             >
               <Styled.p>
                 <b>Git.Blobs</b> is an idea I had to create generative art from
@@ -285,7 +282,7 @@ const Home = ({ data: _data }) => {
         </WaveContainer>
         <Footer />
       </Main>
-    </Fragment>
+    </>
   )
 }
 
