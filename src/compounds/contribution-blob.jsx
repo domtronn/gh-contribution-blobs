@@ -45,10 +45,10 @@ export default ({
       xmlns='http://www.w3.org/2000/svg'
       height='80vh'
       sx={{
-        marginY: [-size * 1.2],
+        marginY: [-size * 2, -size * 1.2],
         alignSelf: 'center',
         overflow: 'visible',
-        maxWidth: ['100vw','100vw','160vh']
+        maxWidth: ['100%','100%','160vh']
       }}
       viewBox={`0 0 ${size} ${size}`}
       className={className}

@@ -10,6 +10,7 @@ export default {
   },
 
   fontSizes: {
+    xs: 12,
     base: 18,
     lg: 24,
     xl: 48,
@@ -93,7 +94,7 @@ export default {
     },
     p: {
       lineHeight: 1.8,
-      fontSize: 'xs'
+      fontSize: ['xs', 'base']
     }
   }
 }

@@ -16,6 +16,7 @@ export default ({
   return (
     <div
       sx={{
+        display: ['none','block'],
         alignSelf: 'center',
         position: 'absolute',
         width: 'auto'

@@ -169,7 +169,7 @@ const Home = ({ data: _data }) => {
           <div
             sx={{
               transform: loading ? 'scale(0)' : 'scale(1)',
-              marginX: [0, 0, 'auto'],
+              marginX: [0, 'auto'],
             }}
           >
             <CBlob
@@ -202,10 +202,11 @@ const Home = ({ data: _data }) => {
               sx={{
                 mt: -40,
                 textAlign: 'center',
-                px: 'md'
+                px: [0, 'sm', 'md']
               }}
             >
               <TextAutocomplete
+                inputProps={{ placeholder: 'GitHub username' }}
                 value={username}
                 items={suggestions}
                 onSelect={(value) => {

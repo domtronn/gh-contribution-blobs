@@ -11,6 +11,7 @@ export const Input = ({ id, ...props }) => (
     type='text'
     id={id}
     sx={{
+      width: ['100%', '100%', 'auto'],
       fontFamily: 'base',
       paddingY: 'md',
       paddingX: 'lg',
@@ -38,7 +39,6 @@ export const Input = ({ id, ...props }) => (
     {...props}
   />
 )
-
 
 export default ({ id, children, ...props }) => (
   <Flex

@@ -7,7 +7,8 @@ export default ({ children }) => (
     <main
       sx={{
         position: 'relative',
-        width: '100%'
+        width: '100%',
+        overflow: 'hidden',
       }}
     >
       <Styled.root>
