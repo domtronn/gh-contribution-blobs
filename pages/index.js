@@ -211,6 +211,7 @@ const Home = ({ data: _data }) => {
               }}
             >
               <TextAutocomplete
+                id='github-username'
                 inputProps={{ placeholder: 'GitHub username' }}
                 value={username}
                 items={suggestions}

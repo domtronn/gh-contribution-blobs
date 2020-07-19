@@ -8,18 +8,19 @@ import Autocomplete from 'react-autocomplete'
 
 import { shadow } from '../utils/theme-ui'
 
-export default ({ id, children, getItemValue, renderItem: f, ...props }) => (
+export default ({ id, children, getItemValue, inputProps, renderItem: f, ...props }) => (
   <Flex
     sx={{
-      position: 'relative',
+      position: 'relative'
     }}
   >
-    <Label id='id'>
+    <Label id={id}>
       {children}
     </Label>
     <Autocomplete
       {...props}
       getItemValue={getItemValue}
+      inputProps={{ ...inputProps, id }}
       renderMenu={items => (
         <Flex
           sx={{
@@ -48,7 +49,7 @@ export default ({ id, children, getItemValue, renderItem: f, ...props }) => (
               width: ({ space }) => space.lg,
               position: 'absolute',
               top: 0,
-              right: 0,
+              right: 0
             }
           }}
           children={items}
@@ -69,7 +70,7 @@ export default ({ id, children, getItemValue, renderItem: f, ...props }) => (
               cursor: 'pointer',
               img: {
                 transform: 'scale(1.4)'
-              },
+              }
             },
             paddingX: 'md',
             paddingY: 'sm',
