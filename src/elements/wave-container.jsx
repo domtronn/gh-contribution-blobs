@@ -8,13 +8,13 @@ export default ({
   from,
   to,
   children,
-  className,
+  className
 }) => (
   <Box
     className={className}
   >
     <svg
-      sx={{ position: 'absolute', bottom: 0, fill: to }}
+      sx={{ position: 'absolute', bottom: -1, fill: to, left: -1, right: -1, width: 'calc(100% + 2px)' }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 1440 320'
     >

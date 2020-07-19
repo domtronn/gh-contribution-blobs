@@ -47,7 +47,7 @@ const cleanSVG = (txt = '') => txt
 const SliderBox = ({ children, className }) => (
   <Box
     width={[1, 1 / 3, 1 / 3]}
-    sx={{ px: [0, 0, 'md'], my: ['md', 0, 0], display: 'inline-block', textAlign: 'center' }}
+    sx={{ px: ['sm', 0, 'md'], my: ['sm', 0, 0], display: 'inline-block', textAlign: 'center' }}
     className={className}
   >
     {children}
@@ -233,7 +233,7 @@ const Home = ({ data: _data }) => {
 
             <Box
               alignItems='center'
-              sx={{ mt: 'md', mb: 'lg' }}
+              sx={{ mt: [0, 'md'], mb: 'lg' }}
               width={1}
             >
               <SliderBox>
