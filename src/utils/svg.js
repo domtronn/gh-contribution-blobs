@@ -63,7 +63,7 @@ export const bezierPath = (smoothing = 0.2, close = true) => (p, i, arr) => {
   const [cpsX, cpsY] = cpoint(index(arr, i - 1), index(arr, i - 2), p, smoothing, false)
   const [cpeX, cpeY] = cpoint(p, index(arr, i - 1), index(arr, i + 1), smoothing, true)
 
-  return `C${[cpsX, cpsY, cpeX, cpeY, pX, pY].map(i => +i.toFixed(2)).join(',')}`
+  return `C${[cpsX, cpsY, cpeX, cpeY, pX, pY].map(i => +i.toFixed(1)).join(',')}`
 }
 
 /**
@@ -84,8 +84,8 @@ export const linePath = ([x, y]) => `L${x},${y}`
 export const svgPath = (points, cmd, close = true) => {
   const d = points.reduce(
     (acc, [x, y], i, arr) => i === 0
-      ? `M${x},${y}`
-      : `${acc} ${cmd([x, y], i, arr)}`, ''
+      ? `M${x.toFixed(1)},${y.toFixed(1)}`
+      : `${acc}${cmd([x, y], i, arr)}`, ''
   )
 
   return close ? `${d}${cmd(points[0], 0, points)}Z` : d

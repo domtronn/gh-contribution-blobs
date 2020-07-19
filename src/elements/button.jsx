@@ -3,10 +3,13 @@ import { jsx } from 'theme-ui'
 
 import { useState } from 'react'
 import { shadow } from '../utils/theme-ui'
+import { darken } from '@theme-ui/color'
 
 export default ({
   children,
   label,
+  className,
+  variant,
   ...rest
 }) => {
   const [md, setMd] = useState(false)
@@ -17,18 +20,16 @@ export default ({
       onMouseDown={() => setMd(true)}
       onMouseUp={() => setMd(false)}
       sx={{
-        width: ['2.5em', '3em'],
-        height: ['2.5em', '3em'],
         display: 'inline-flex',
         justifyContent: 'center',
         alignItems: 'center',
         borderStyle: 'none',
 
         fontFamily: 'base',
-        padding: 0,
+        paddingX: 'md',
+        paddingY: 'sm',
         marginY: '0',
-        marginX: ['sm', 'md'],
-        borderRadius: 'round',
+        borderRadius: 'sm',
         backgroundColor: 'primary',
         color: 'background',
         textDecoration: 'none',
@@ -42,7 +43,7 @@ export default ({
         '*': { transition: 'all .2s ease-in' },
 
         ':hover': {
-          transform: 'scale(1.2)',
+          backgroundColor: darken('primary', 0.1),
           boxShadow: shadow('box'),
           cursor: 'pointer'
         },
@@ -52,9 +53,12 @@ export default ({
         },
 
         ':active': {
-          transform: md ? 'scale(1.1)' : 'scale(1.2)'
-        }
+          transform: variant ? md ? 'scale(1.1)' : 'scale(1.2)' : ''
+        },
+
+        variant: `elements.button.${variant}`
       }}
+      className={className}
     >
       {children}
     </button>

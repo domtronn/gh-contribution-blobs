@@ -1,3 +1,5 @@
+import { shadow } from './utils/theme-ui'
+
 export default {
   breakpoints: [
     '768px',
@@ -43,6 +45,7 @@ export default {
     secondary: '#442371',
     background: '#fbe6cd',
     grey: '#f7d6b5',
+    shadow: '#1c1e26',
     'fg-on-primary': '#fbe6cd',
     fg: '#111'
   },
@@ -78,13 +81,55 @@ export default {
       fontFamily: 'heading'
     },
     h3: {
+      m: 0,
+      p: 0,
       fontSize: ['sm', 'md', 'lg']
+    },
+    h4: {
+      m: 0,
+      p: 0,
+      fontSize: ['sm', 'md', 'md']
     },
     p: {
       margin: 0,
       padding: 0,
       lineHeight: 1.8,
       fontSize: ['xs', 'base']
+    },
+    pre: {
+      overflowX: 'scroll',
+      borderRadius: 'sm',
+      fontSize: 'xs',
+      backgroundColor: 'shadow',
+      color: 'white',
+      p: 'md'
+    }
+  },
+  elements: {
+    button: {
+      icon: {
+        padding: 0,
+        borderRadius: 'round',
+        width: ['2.5em', '3em'],
+        height: ['2.5em', '3em'],
+        marginX: ['sm', 'md'],
+        ':hover': {
+          transform: 'scale(1.2)',
+          boxShadow: shadow('box')
+        }
+      },
+      link: {
+        border: 'none',
+        color: 'primary',
+        padding: 0,
+        width: ['2.5em', '3em'],
+        height: ['2.5em', '3em'],
+        background: 'none',
+        ':hover': {
+          transform: 'scale(1.2)',
+          boxShadow: 'none'
+        }
+      }
     }
   }
 }

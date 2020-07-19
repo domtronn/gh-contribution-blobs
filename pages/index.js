@@ -1,13 +1,23 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import fetch from 'unfetch'
 
 import { pivotAndFilter } from './api/utils/data'
 import { isEmpty } from '../src/utils/obj'
 
-import { RiCalendarCheckLine, RiCalendarEventLine, RiCodeLine, RiDownloadCloud2Line, RiBrushLine } from 'react-icons/ri'
+import {
+  RiCloseLine,
+  RiCalendarCheckLine,
+  RiCalendarEventLine,
+  RiCodeLine,
+  RiDownloadCloud2Line,
+  RiBrushLine,
+  RiFileCopyLine,
+  RiErrorWarningLine,
+  RiCheckLine
+} from 'react-icons/ri'
 
 /* ssr */
 import fs from 'fs'
@@ -28,6 +38,7 @@ import Checkbox from '../src/elements/checkbox'
 import Slider from '../src/elements/slider'
 import Loader from '../src/elements/loader'
 import Error from '../src/elements/error'
+import Modal from '../src/elements/modal'
 import Main from '../src/elements/main'
 
 /* Compounds */
@@ -37,7 +48,7 @@ import Bar from '../src/compounds/bar'
 import NavBar from '../src/compounds/navbar'
 
 import { shadow } from '../src/utils/theme-ui'
-import { download } from '../src/utils/download'
+import { download, copy } from '../src/utils/download'
 
 const cleanSVG = (txt = '') => txt
   .replace(/<text.*?<\/text>/g, '')
@@ -61,6 +72,7 @@ const Home = ({ data: _data }) => {
   const [opacity, setOpacity] = useState(0.4)
   const [showGuide, setShowGuide] = useState(false)
   const [themeId, setThemeId] = useState(0)
+  const [modalOpen, setModalOpen] = useState(false)
 
   /* Nav control */
   const [highlighted, setHighlighted] = useState(null)
@@ -73,7 +85,14 @@ const Home = ({ data: _data }) => {
   const [data, setData] = useState(_data)
   const [loading, setLoading] = useState(false)
 
+  const [copyState, setCopyState] = useState(0)
+
   const [rt, setrt] = useState(null)
+  const [svg, setSvg] = useState('')
+
+  useEffect(() => {
+    setSvg(cleanSVG(document.getElementById('contribution-blob').outerHTML))
+  })
 
   /** Handlers */
   const handleSubmit = async (value) => {
@@ -122,6 +141,58 @@ const Home = ({ data: _data }) => {
       </Head>
 
       <Main themeId={themeId}>
+        <Modal
+          onClose={() => setModalOpen(false)}
+          isOpen={modalOpen}
+        >
+          <Box
+            onClick={e => e.stopPropagation()}
+            sx={{
+              maxWidth: ({ space }) => [
+                `calc(100% - ${space.lg}px)`, '60%', '50%'
+              ],
+              py: 'md',
+              px: 'lg',
+              borderRadius: 'md',
+              backgroundColor: 'background'
+            }}
+          >
+            <Flex
+              justifyContent='space-between'
+              alignItems='center'
+            >
+              <Styled.h4>Copy SVG code</Styled.h4>
+              <Button
+                sx={{ marginRight: '0 !important' }}
+                variant='link'
+                aria-label='close-modal'
+                onClick={() => setModalOpen(false)}
+              >
+                <RiCloseLine sx={{ width: '100%', height: '100%', p: 'sm' }} />
+              </Button>
+            </Flex>
+            <Styled.pre>
+              {svg
+                .toString()
+                .replace(/<path/g, '\n  <path')
+                .replace(/<\/svg>/g, '\n</svg>')}
+            </Styled.pre>
+            <Button
+              aria-label='copy-to-clipboard'
+              onClick={() => copy(svg, (success) => {
+                success
+                  ? setCopyState(1)
+                  : setCopyState(2)
+                setTimeout(() => setCopyState(0), 1500)
+              })}
+            >
+              {copyState === 0 && <><RiFileCopyLine sx={{ mr: 'sm' }} /> Copy to clipboard</>}
+              {copyState === 1 && <><RiCheckLine sx={{ mr: 'sm' }} /> Copied</>}
+              {copyState === 2 && <><RiErrorWarningLine sx={{ mr: 'sm' }} /> Something went wrong...</>}
+            </Button>
+          </Box>
+        </Modal>
+
         <Box sx={{ zIndex: 'max', position: 'relative' }}>
           <Styled.h1
             sx={{
@@ -264,15 +335,21 @@ const Home = ({ data: _data }) => {
               sx={{ mb: -40 }}
             >
               <Button
+                variant='icon'
                 aria-label='download-svg'
-                onClick={() => download(`${username || 'blob'}.svg`, 'contribution-blob', cleanSVG)}
+                onClick={() => download(`${username || 'blob'}.svg`, svg)}
               >
                 <RiDownloadCloud2Line sx={{ width: '100%', height: '100%', p: 'sm' }} />
               </Button>
-              <Button aria-label='download-svg'>
+              <Button
+                variant='icon'
+                aria-label='copy-code'
+                onClick={() => setModalOpen(!modalOpen)}
+              >
                 <RiCodeLine sx={{ width: '100%', height: '100%', p: 'sm' }} />
               </Button>
               <Button
+                variant='icon'
                 aria-label='change-theme'
                 onClick={() => setThemeId(themeId + 1)}
               >

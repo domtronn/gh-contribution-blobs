@@ -14,8 +14,8 @@ export default ({ on: On = () => {}, off: Off = () => {}, id, children, ...props
       position: 'relative',
       width: size,
       height: size,
-      transition: 'all 0.1s ease-in-out',
-      '*': { transition: 'all 0.1s ease-in-out' },
+      transition: 'all 0.2s ease-in-out',
+      '*': { transition: 'all 0.2s ease-in-out' },
       '> *': {
         width: '100%',
         height: '100%'
