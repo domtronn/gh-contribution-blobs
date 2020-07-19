@@ -25,6 +25,7 @@ export default ({
         borderStyle: 'none',
 
         fontFamily: 'base',
+        padding: 0,
         marginY: '0',
         marginX: ['sm', 'md'],
         borderRadius: 'round',

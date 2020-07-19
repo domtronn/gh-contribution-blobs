@@ -57,7 +57,7 @@ export default ({ on: On = () => {}, off: Off = () => {}, id, children, ...props
           borderStyle: 'solid'
         },
         ':checked + div': {
-          borderWidth: ['1em', '1.5em']
+          borderWidth: ['1em', '1.31em']
         },
 
         ':checked ~ .on': { display: 'block' },
