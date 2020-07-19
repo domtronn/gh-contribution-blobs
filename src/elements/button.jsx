@@ -27,7 +27,7 @@ export default ({
 
         fontFamily: 'base',
         paddingX: 'md',
-        paddingY: 'sm',
+        paddingY: ['md', 'sm'],
         marginY: '0',
         borderRadius: 'sm',
         backgroundColor: 'primary',
@@ -38,6 +38,9 @@ export default ({
         textAlign: 'center',
         webkitAppearance: 'none',
         mozAppearance: 'none',
+
+        width: ['100%', 'auto'],
+        textAlign: ['center', 'left'],
 
         transition: 'all .2s ease-in',
         '*': { transition: 'all .2s ease-in' },
