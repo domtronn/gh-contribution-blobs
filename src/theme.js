@@ -49,7 +49,11 @@ export default {
 
   shadows: {
     text: '4px 4px 12px #e5ece9',
-    heading: '2px 2px 0 background, -2px 2px 0 background, -2px -2px 0 background, 2px -2px 0 background, 4px 4px 0 primary, 5px 5px 0 primary, 6px 6px 0 primary, 7px 7px 0 primary',
+    heading: [
+      '1.5px 1.5px 0 background, -1.5px 1.5px 0 background, -1.5px -1.5px 0 background, 1.5px -1.5px 0 background, 2px 2px 0 primary, 3px 3px 0 primary, 4px 4px 0 primary, 5px 5px 0 primary',
+      '2px 2px 0 background, -2px 2px 0 background, -2px -2px 0 background, 2px -2px 0 background, 4px 4px 0 primary, 5px 5px 0 primary, 6px 6px 0 primary, 7px 7px 0 primary',
+      '2px 2px 0 background, -2px 2px 0 background, -2px -2px 0 background, 2px -2px 0 background, 4px 4px 0 primary, 5px 5px 0 primary, 6px 6px 0 primary, 7px 7px 0 primary'
+    ],
     thumb: '0 0 0 4px background',
     'thumb-focus': '0 0 0 2px background, 0 0 0 4px primary, 0 0 0 8px background',
     'input-focus': '0 0 0 4px background, 0 0 0 8px primary',
