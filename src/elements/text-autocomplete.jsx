@@ -58,8 +58,8 @@ export default ({ id, children, getItemValue, inputProps, renderItem: f, ...prop
       renderInput={Input}
       renderItem={item => (
         <Flex
+          key={getItemValue(item)}
           aria-label={getItemValue(item)}
-          aria-role='button'
           alignItems='center'
           sx={{
             position: 'relative',

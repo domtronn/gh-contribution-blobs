@@ -1,11 +1,22 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
+import { useEffect } from 'react'
+
 import { alpha } from '@theme-ui/color'
 import { Flex, Box } from 'reflexbox'
 
 export default ({ isOpen, onClose = () => {}, children, ...props }) => {
   if (!isOpen) return null
+
+  const handleKeyDown = (e) => {
+    return e.keyCode === 27 && onClose()
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  })
 
   return (
     <Flex

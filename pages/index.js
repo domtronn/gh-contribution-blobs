@@ -178,6 +178,7 @@ const Home = ({ data: _data }) => {
                 .replace(/<\/svg>/g, '\n</svg>')}
             </Styled.pre>
             <Button
+              sx={{ marginTop: 'md' }}
               aria-label='copy-to-clipboard'
               onClick={() => copy(svg, (success) => {
                 success
