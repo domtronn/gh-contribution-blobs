@@ -19,7 +19,8 @@ export default ({ isOpen, onClose = () => {}, children, ...props }) => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: alpha('shadow', 0.6)
+        backgroundColor: alpha('shadow', 0.6),
+        animation: 'fadeIn 0.2s ease-in'
       }}
     >
       {children}
